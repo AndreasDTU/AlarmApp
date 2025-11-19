@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.AlarmApp" parent="android:Theme.Material.Light.DarkActionBar" />
+</resources>
