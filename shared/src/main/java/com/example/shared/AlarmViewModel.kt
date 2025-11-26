@@ -1,23 +1,22 @@
 package com.example.shared
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class AlarmViewModel(
-    private val channelId: Int,
-    private val apiKey: String
+    private val repository: AlarmRepository
 ) : ViewModel() {
 
-    val alarms = AlarmRepository.alarms
+    var alarms by mutableStateOf<List<Alarm>>(emptyList())
+        private set
 
-    init {
+    fun loadAlarms(trailerId: Int) {
         viewModelScope.launch {
-            while (true) {
-                AlarmRepository.updateAlarms(channelId, apiKey)
-                delay(10_000)  // every 10 seconds
-            }
+            alarms = repository.getAlarms(trailerId)
         }
     }
 }
