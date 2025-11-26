@@ -9,8 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.automotive"
-        minSdk = 28
-        targetSdk = 34
+        minSdk = 34
         versionCode = 1
         versionName = "1.0"
 
