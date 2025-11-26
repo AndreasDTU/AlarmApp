@@ -16,7 +16,7 @@ class AlarmViewModel(
         viewModelScope.launch {
             while (true) {
                 AlarmRepository.updateAlarms(channelId, apiKey)
-                delay(10_000)  // fetch every 10 seconds
+                delay(10_000)  // every 10 seconds
             }
         }
     }

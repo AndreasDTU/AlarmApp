@@ -10,8 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.alarmapp"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = 34
         versionCode = 1
         versionName = "1.0"
 
