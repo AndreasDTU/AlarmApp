@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.alarmapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.alarmapp"
@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
     implementation(project(":shared"))
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.core.ktx)
