@@ -40,7 +40,9 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
-
+    implementation("androidx.compose.runtime:runtime:1.5.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
+// or latest version
     // Lifecycle ViewModel (used by both mobile + automotive)
     implementation(libs.androidx.lifecycle.viewmodel.ktx.v282)
     implementation(libs.androidx.core.ktx)

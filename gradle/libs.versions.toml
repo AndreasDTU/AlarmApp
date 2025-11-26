@@ -17,6 +17,7 @@ lifecycleViewmodelKtxVersion = "2.10.0"
 retrofit = "3.0.0"
 appcompat = "1.7.1"
 material = "1.13.0"
+material3 = "1.4.0"
 
 [libraries]
 androidx-app = { module = "androidx.car.app:app", version.ref = "appProjected" }
@@ -44,6 +45,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

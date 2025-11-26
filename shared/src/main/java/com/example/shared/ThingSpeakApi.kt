@@ -6,9 +6,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ThingSpeakApi {
-    @GET("channels/{id}/feeds.json")
+
+    @GET("channels/{channelId}/feeds.json")
     suspend fun getFeeds(
-        @Path("id") channelId: Int,
-        @Query("api_key") apiKey: String
+        @Path("channelId") channelId: Int,
+        @Query("api_key") apiKey: String,
+        @Query("results") results: Int = 50
     ): ThingSpeakResponse
 }
