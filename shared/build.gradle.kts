@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.shared"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
 
