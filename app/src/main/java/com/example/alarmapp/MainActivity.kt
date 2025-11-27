@@ -4,14 +4,28 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.alarmapp.Screens.AlarmListScreen
@@ -54,7 +68,8 @@ class MainActivity : ComponentActivity() {
                             val viewModel: AlarmViewModel = viewModel(factory = factory)
                             AlarmListScreen(
                                 trailerId = selectedTrailerId!!,
-                                viewModel = viewModel
+                                viewModel = viewModel,
+                                onBackClick = { selectedTrailerId = null }
                             )
                         }
 
@@ -67,13 +82,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SelectTrailerScreen(onTrailerSelected: (Int) -> Unit) {
-    Text(
-        text = "Please select your current trailer:",
-        style = MaterialTheme.typography.titleMedium,
-        modifier = Modifier.padding(16.dp)
-    )
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(
+            text = "Please select your current trailer:",
+            style = MaterialTheme.typography.titleMedium,
+        )
 
-    TrailerDropdownMenu(onTrailerSelected)
+        TrailerDropdownMenu(onTrailerSelected)
+    }
 }
 
 @Composable
@@ -83,10 +99,17 @@ fun TrailerDropdownMenu(onTrailerSelected: (Int) -> Unit) {
     // Example trailer IDs
     val trailerIds = List(10) { it + 1 }
 
-    Box(modifier = Modifier.padding(16.dp)) {
-        IconButton(onClick = { expanded = !expanded }) {
+    Box() {
+        IconButton(
+            onClick = { expanded = !expanded },
+            modifier = Modifier.border(
+                width = 2.dp,
+                color = Color.Black,
+                shape = RectangleShape
+            )
+        ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                imageVector = Icons.Default.ArrowDropDown,
                 contentDescription = "Select Trailer"
             )
         }
