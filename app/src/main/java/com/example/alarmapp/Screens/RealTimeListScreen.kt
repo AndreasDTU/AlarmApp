@@ -1,6 +1,5 @@
 package com.example.alarmapp.Screens;
 
-import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,14 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.alarmapp.AlarmNotificationHelper
 import com.example.shared.Alarm
 import com.example.shared.AlarmViewModel
 
 @Composable
-fun AlarmListScreen(
+fun RealTimeListScreen(
     trailerId: Int,
     viewModel: AlarmViewModel,
     onBackClick: () -> Unit
@@ -30,7 +27,7 @@ fun AlarmListScreen(
     LaunchedEffect(trailerId) {
         viewModel.loadAlarms(trailerId)
     }
-    val context = LocalContext.current  // Get the context in Compose
+
     val alarms = viewModel.alarms
     Column(Modifier.padding(16.dp)) {
         Button(
@@ -46,8 +43,6 @@ fun AlarmListScreen(
             }
         } else {
             // Show the list of alarms
-            val notificationHelper = AlarmNotificationHelper(context = context)
-            notificationHelper.sendAlarmNotification("Alarm Detected!", "An alarm event has occurred")
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
@@ -59,20 +54,3 @@ fun AlarmListScreen(
     }
 }
 
-@Composable
-fun AlarmItem(alarm: Alarm) {
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(text = "Truck ID: ${alarm.truckId}")
-        Text(text = "Alarm Code: ${alarm.alarmCode}")
-        Text(text = "Description: ${alarm.alarmDescription}")
-        Text(text = "Type: ${alarm.alarmType}")
-        Text(text = "State: ${alarm.alarmState}")
-        Text(text = "Temperature: ${alarm.temperature}")
-        val time = alarm.createdAt
-        val split = time.split("T")
-        val split1 = split[1].split("Z")
-        Text(text = "Created At: ${split[0]}")
-        Text(text = "Time: ${split1[0]}")
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
-    }
-}

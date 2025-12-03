@@ -14,6 +14,7 @@ activityCompose = "1.12.0"
 composeBom = "2025.11.01"
 lifecycleViewmodelKtx = "2.10.0"
 lifecycleViewmodelKtxVersion = "2.10.0"
+materialIconsExtended = "1.7.8"
 retrofit = "3.0.0"
 appcompat = "1.7.1"
 material = "1.13.0"
@@ -22,6 +23,7 @@ material3 = "1.4.0"
 [libraries]
 androidx-app = { module = "androidx.car.app:app", version.ref = "appProjected" }
 androidx-app-projected = { module = "androidx.car.app:app-projected", version.ref = "appProjected" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }

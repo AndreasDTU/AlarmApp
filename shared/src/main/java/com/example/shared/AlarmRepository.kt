@@ -1,14 +1,13 @@
 package com.example.shared
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.example.shared.ApiKey
 
 class AlarmRepository(private val api: ThingSpeakApi) {
-    
+    private val apiKey = ApiKey()
     suspend fun getAlarms(trailerId: Int): List<Alarm> {
         val response = api.getFeeds(
-            channelId = 3160644,      // your channel ID
-            apiKey = "27IMKHF43VBWOLTZ"
+            channelId = apiKey.channelId, // your channel ID
+            apiKey = apiKey.apiKey
         )
 
         return response.feeds

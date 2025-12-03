@@ -21,5 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Alarm app"
 include(":app")
-include(":automotive")
 include(":shared")
